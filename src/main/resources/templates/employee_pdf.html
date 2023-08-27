@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{employees :: import}">
+    <meta charset="UTF-8">
+    <title>Convert into PDF file</title>
+</head>
+<body>
+<h2>Fiche employé</h2>
+<div class="col-md-4">
+    <img th:src="${employee.stringImage}"
+         alt="Profile Image"
+         class="img-fluid">
+</div>
+<div class="col-md-8">
+    <ul class="list-group">
+        <li class="list-group-item">Id employé: <span th:text="*{id}" type="text"></span></li>
+        <li class="list-group-item">Nom: <span th:text="*{lastName}" type="text"></span></li>
+        <li class="list-group-item">Prénom: <span th:text="*{firstName}" type="text"></span></li>
+        <li class="list-group-item">Date d'embauche: <span th:text="*{entranceDate}" type="text"></span></li>
+        <li class="list-group-item">Date de départ: <span th:text="*{departureDate}" type="text"></span></li>
+        <li class="list-group-item">Date de départ: <span th:text="*{cnaps}" type="text"></span></li>
+    </ul>
+</div>
+
+<div class="col-lg-4 col-md-6">
+    <h4>Information sur le salaire</h4>
+    <p>Salaire brute actuel : 3.000.000 Ar/mois</p>
+</div>
+
+<div class="footer bg-dark text-white py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <p><strong>Name:</strong> <span th:text="${companyConf.name}"></span></p>
+                <p><strong>NIF:</strong> <span th:text="${companyConf.taxIdentity.nif}"></span></p>
+                <p><strong>STAT:</strong> <span th:text="${companyConf.taxIdentity.stat}"></span></p>
+            </div>
+            <div class="col-md-4">
+                <p><strong>Address:</strong> <span th:text="${companyConf.address}"></span></p>
+                <p><strong>Phone:</strong></p>
+                <ul class="list-unstyled" th:each="phone : ${companyConf.phones}">
+                    <li th:text="${phone.value}"></li>
+                </ul>
+                <p><strong>Email:</strong> <span th:text="${companyConf.email}"></span></p>
+            </div>
+        </div>
+    </div>
+</div>
+</h3>
+</body>
+</html>
